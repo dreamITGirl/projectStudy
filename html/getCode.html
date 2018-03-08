@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width">
+    <title>获取验证码</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/getCode.css">
+</head>
+<body>
+    <div class="container">
+        <div id="loginBox">
+            <input type="text" placeholder="请输入手机号" id="telephone" >
+            <input type="text" placeholder="请输入验证码" id="getCode" >
+            <div  id="loginBtn" class="btn">获取验证码</div>
+        </div>
+    </div>
+    <script src="../js/rem.js"></script>
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" >
+        var telephone = document.getElementById('telephone');
+        var getCode = document.getElementById('getCode');
+        var loginBtn = document.getElementById('loginBtn');
+//        var loginBtn = $('#loginBtn');
+        var num = 60,clock;
+
+        loginBtn.onclick = function () {
+            this.disabled = true;
+            if(!checkPhone(telephone)){
+                clock = setInterval(function () {
+                    doLoop ()
+                },1000);
+                var phoneNum = telephone.value;
+                console.log(phoneNum);
+                $.ajax({
+                    url:'url',
+                    method:'POST',
+                    dataType:'json',
+                    success:function(data){
+                       if (data.status==0){
+                           alert('短信已发送')
+                       }else{
+                           alert(data.msg)
+                       }
+                    }
+                })
+
+            }else{
+                alert('输入的手机号不合法')
+            }
+
+        };
+        function checkPhone(telephone) {
+
+             var isRight = (/^(0|86|17951)?(13[0-9]|15[012356789]|17[012356789]|18[0-9]|14[57])[0-9]{8}$/).test(telephone);
+//             var  = reg.test(telephone);
+             console.log(isRight);
+         return isRight
+        }
+        function doLoop (){
+            num --;
+            console.log(num);
+            if(num>0){
+                console.log(loginBtn);
+                $('#loginBtn').html(num+'秒重新获取');
+
+            }else{
+                clearInterval(clock);
+                $('#loginBtn').html('获取验证码');
+                loginBtn.disabled= false;
+                num = 60;
+            }
+        }
+    </script>
+</body>
+</html>
