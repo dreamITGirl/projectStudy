@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width">
+    <title>移动端播放视频</title>
+    <link rel="stylesheet" href="../css/playVedio.css">
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+<body>
+    <div class="container">
+        <img src="../image/icon_bofangbai.png" alt="播放按钮" class="playBtn">
+        <video src="../video/zly.mp4" id="video" controls="controls" playsinline="true" preload="metadata">
+            您的浏览器不支持该标签
+        </video>
+    </div>
+    <div class="container">
+        <audio src="../video/Low.mp3" controls="controls" class="audio"></audio>
+    </div>
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/rem.js"></script>
+    <script type="text/javascript">
+        var num = 0;
+       $('#video').click(function(){
+           num++;
+           if(num%2===0){
+               this.play();
+               $('.playBtn').hide()
+           }else{
+               $('.playBtn').show()
+               this.pause()
+           }
+
+       });
+       $('.playBtn').click(function(){
+           this.pause();
+       })
+    </script>
+</body>
+</html>

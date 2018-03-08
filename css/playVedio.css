@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  position: relative;
+}
+#video {
+  width: 100%;
+}
+.playBtn {
+  position: absolute;
+  top: 40%;
+  left: 46%;
+}
+.audio {
+  margin-top: 1rem;
+}
