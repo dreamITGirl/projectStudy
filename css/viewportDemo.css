@@ -1,0 +1,33 @@
+html {
+  font-size: 2vw;
+}
+.container {
+  width: 100vw;
+  border: 1px solid #ddd;
+}
+.container .textPart {
+  font-size: 2vw;
+}
+.container img {
+  width: 100vw;
+}
+.colorBox {
+  border: 1px solid #dddddd;
+  display: flex;
+  margin-bottom: 10vh;
+}
+.colorBox .redBox {
+  width: 40vw;
+  height: 40vh;
+  background-color: #ee4433;
+}
+.colorBox .blueBox {
+  width: 6vw;
+  height: 60vh;
+  background-color: deepskyblue;
+}
+.colorBox .grayBox {
+  width: 4vw;
+  height: 40vh;
+  background-color: gray;
+}
