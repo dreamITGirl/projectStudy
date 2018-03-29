@@ -23,11 +23,49 @@
 				    display: block;				  
 				    border-top: 18px solid transparent;
 				    border-bottom: 18px solid transparent;
-				    border-left: 18px solid #ddd;
+				    border-left: 18px solid #aaa;
+			}
+			.icon{
+				display: inline-block;
+				position: absolute;
+			    top: 0;
+			    left: 100%;
+			    z-index: 1;
+			    display: block;				  
+			    border-top: 18px solid transparent;
+			    border-bottom: 18px solid transparent;
+			    border-left: 18px solid #FFFFFF !important;
+			   
+			}
+			.iconActive{
+				display: inline-block;
+				position: absolute;
+			    top: 0;
+			    left: 100%;
+			    z-index: 1000;
+			    display: block;				  
+			    border-top: 18px solid transparent;
+			    border-bottom: 18px solid transparent;
+				border-left: 18px solid #00BFFF !important;
+				
 			}
 			.navList li:after{
 				border-left: 18px solid #fff;				
 			}
+			.navList li:first-child:after{
+				z-index: 102;
+				
+			}
+			.navList li:nth-child(2):after{
+				z-index:62;
+			}
+			.navList li:nth-child(3):after{
+				z-index:52;
+			}
+			.navList li:nth-child(4):after{
+				z-index:32;
+			}
+			
 			.active{
 				background: #00BFFF;
 			}
@@ -36,31 +74,41 @@
 				color:#000;
 				position: relative;
 			}
+			
+			
 		</style>
 	</head>
 	<body >
 		 <div class="nav">
 		 	<ul class="navList">
 		 		<li class="navList-item" style="z-index:100" >
-		 			<a href="" class="breadcrumb">第一页</a>
+		 			<a href="javascript:;" class="breadcrumb">第一页</a>
+		 			<i class="icon"></i>
 		 		</li>
 		 		<li class="navList-item" style="z-index: 60;" >
-		 			<a href="" class="breadcrumb">第二页</a>
+		 			<a href="javascript:;" class="breadcrumb">第二页</a>
+		 			<i class="icon"></i>
+		 			
 		 		</li>
 		 		<li class="navList-item" style="z-index:50" >
-		 			<a href="" class="breadcrumb">第三页</a>
+		 			<a href="javascript:;" class="breadcrumb">第三页</a>
+		 			<i class="icon"></i>
+		 			
 		 		</li>
 		 		<li class="navList-item" style="z-index: 30;" >
-		 			<a href="" class="breadcrumb">第四页</a>
-		 		</li>
+		 			<a href="javascript:;" class="breadcrumb">第四页</a>
+		 			<i class="icon"></i>
+		 			
 		 	</ul>
 		 </div>
-		 <!--<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		 
 		 <script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
 		 <script type="text/javascript">
 		 	$('.navList').on('click','li',function () {
 		 		 var index = $(this).index();
 		 		 $(this).addClass('active').siblings().removeClass('active');
+		 		 
+		 		 $(this).children('.icon').addClass('iconActive').parent().siblings().children('.icon').removeClass('iconActive')
 		 	})
 		 	
 		 </script>
