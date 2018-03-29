@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>显示与隐藏</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        .pageList{
+            display: flex;
+
+        }
+        .pageList li{
+            border:1px solid #ddd;
+            padding: 5px;
+            border-right:none
+        }
+        .pageList li:last-child{
+            border-right: 1px solid #DDDDDD;
+        }
+        .pageList li:after{
+            content: "";
+            background-color: aquamarine;
+            color:#fff;
+
+        }
+        .active{
+            background: cornflowerblue;
+            color:#FFFFFF
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="navList">
+    <ul class="pageList">
+        <li class="pageList-item" ng-repeat="item in arr" ng-click="clickedPage(item)">第{{item+1}}页</li>
+    </ul>
+</div>
+<ul class="contentBox">
+    <li  >好好学习，天天向上</li>
+    <li >'该怎么是好么？'</li>
+    <li>'fjaofrj'</li>
+    <li>王晶已确认并非香港导演王晶</li>
+    <li >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis voluptatibus odio repellendus voluptatem modi ipsa tempora molestias delectus necessitatibus autem. Vel provident aperiam tenetur aspernatur odio cupiditate aut reiciendis repellat.</li>
+</ul>
+
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.arr = [0,1,2,3,4];
+        $scope.isShow = true;
+
+        $('.contentBox').children().eq(0).show().siblings().hide();
+        $scope.clickedPage = function (index){
+            $('.contentBox').children().eq(index).show().siblings().hide();
+            $('.pageList').children().eq(index).addClass('active').siblings().removeClass('active')
+        }
+    })
+</script>
+</body>
+</html>
