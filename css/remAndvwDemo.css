@@ -1,0 +1,68 @@
+html {
+    font-size: 16px;
+}
+
+@media screen and (min-width: 375px) {
+    html {
+        /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+        font-size: calc(85.8974359%);
+        font-size: calc(1.8974359px);
+    }
+}
+
+@media screen and (min-width: 414px) {
+    html {
+        /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
+        font-size: calc(110.35665529%);
+        font-size: calc(15.85665529px);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    html {
+        /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+        font-size: calc(120%);
+        font-size: calc(15px);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    html {
+        /* 1000px往后是每100像素0.5px增加 */
+        font-size: calc(132.1%);
+        font-size: calc(16.6px);
+    }
+}
+
+.container img {
+    width: 100%;
+    border: 1px solid #ee4433;
+}
+
+.container .textPart {
+    font-size: 1rem;
+}
+
+.colorBox {
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.colorBox .redBox {
+    width: 11rem;
+    height: 8rem;
+    background-color: #ee4433;
+}
+
+.colorBox .blueBox {
+    width: 6rem;
+    height: 8rem;
+    background-color: deepskyblue;
+}
+
+.colorBox .grayBox {
+    width: 4rem;
+    height: 8rem;
+    background-color: gray;
+}
