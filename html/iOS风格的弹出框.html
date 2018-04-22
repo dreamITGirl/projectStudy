@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <title>ios风格的三种弹出框</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        .shadowMask {
+            background: #000000;
+            opacity: .3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .confirmBox, .alertBox, .promptBox {
+            width: 5.4rem;
+            min-height: 1.25rem;
+            background: #FFFFFF;
+            border-radius: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-2.7rem, -1.625rem);
+        }
+
+        .confirmBox_title {
+            text-align: center;
+            padding: 0;
+            margin: 0.85rem 0 0.75rem 0;
+            font-size: .3rem;
+            font-weight: bold;
+        }
+
+        .promptBox_title {
+            text-align: center;
+            padding: 0;
+            font-size: .3rem;
+            font-weight: bold;
+            height: 1rem;
+            line-height: 1rem;
+        }
+
+        .confirmBox_con {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-size: .34rem;
+            color: #000;
+            padding-left: .4rem;
+            min-height: 2rem;
+        }
+
+        .confirmBox_btn, .alertBox_btn, .promptBox_btn {
+
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            height: 1rem;
+            margin-top: .4rem;
+        }
+
+        .btn {
+            width: 50%;
+            border: none;
+            outline: none;
+            background: #FFFFFF;
+            box-sizing: border-box;
+            border-top: 1px solid #ddd;
+            color: #268CFE;
+
+        }
+
+        .cCancelBtn, .pCancelBtn {
+            border-bottom-left-radius: 10px;
+            -moz-border-radius-bottomleft: 10px;
+            border-right: 1px solid #ddd;
+        }
+
+        .cSureBtn, .pSureBtn {
+            border-bottom-right-radius: 10px;
+            -moz-border-radius-bottomright: 10px;
+        }
+
+        /*alert框样式*/
+        .alertBox {
+            height: 2.25rem;
+        }
+
+        .alertBox_con {
+            text-align: center;
+            font-size: .34rem;
+            line-height: 2;
+            min-height: 0.8rem;
+            margin-top: .6rem;
+        }
+
+        .aSureBtn {
+            flex: 1;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            -moz-border-radius-bottomright: 10px;
+            -moz-border-radius-bottomleft: 10px;
+        }
+
+        /*输入框样式*/
+        .proptBox_con {
+            width: 99%;
+            resize: none;
+            border: none;
+            outline: none;
+            text-align: left;
+            padding: .1rem;
+            box-sizing: border-box;
+            margin-left: .05rem;
+            overflow-x: hidden;
+            height: 1.8rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .promptBox {
+            transform: translate(-2.785rem, -2.4rem);
+        }
+
+        .promptBox_btn {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+<!--使用方法，直接引入-->
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script>
+    //    prompt框需要传入的参数：输入框的标题、placeholder、可输入的最大长度，确认回调函数，取消回调函数
+    window.prompt = function (pTitle, str, maxLength, okCallback, cancleCallback) {
+        var shield;
+        if (!document.getElementById("prompt")) {
+            shield = document.createElement("DIV");
+            shield.id = "prompt";
+            shield.style.display = "block";
+            document.body.appendChild(shield);
+            var strHtml = "";
+            strHtml += '<div class="shadowMask"></div>';
+            strHtml += '<div class="promptBox">';
+            strHtml += '<p class="promptBox_title">' + pTitle + '</p><textarea class="proptBox_con" placeholder="' + str + '" id="promptInfo"maxlength="' + maxLength + '"></textarea>';
+            strHtml += '<div class="promptBox_btn">';
+            strHtml += '<button type="button" class="btn pCancelBtn" onclick="doCancle()">取消</button>';
+            strHtml += '<button type="button" class="btn pSureBtn" onclick="doOk()">确定</button></div></div>';
+            shield.innerHTML = strHtml;
+        } else {
+            shield = document.getElementById("confirm");
+            $(shield).css("display", "block");
+        }
+        this.doOk = function () {
+            $('body').css('overflow', 'hidden');
+            //获取的输入框的值
+            var values = $(shield).find("#promptInfo").val();
+            shield.style.display = "block";
+            if (typeof okCallback == 'function') {
+                okCallback();
+            }
+        },
+            this.doCancle = function () {
+                $('body').css('overflow', 'auto');
+                shield.style.display = "none";
+                if (typeof cancleCallback == 'function') {
+                    cancleCallback();
+                }
+                return false;
+            }
+    };
+    //    confirm框的提示文字，确认回调函数，取消回调函数
+    window.confirm = function (str, okCallback, cancleCallback) {
+        var shield;
+        if (!document.getElementById("confirm")) {
+            shield = document.createElement("DIV");
+            shield.id = "confirm";
+            shield.style.display = "block";
+            document.body.appendChild(shield);
+            var strHtml = "";
+            strHtml += '<div class="shadowMask"></div>';
+            strHtml += '<div class="confirmBox">';
+            strHtml += '<p class="confirmBox_title">提示</p><p class="confirmBox_con" id="confirmInfo">' + str + '</p>';
+            strHtml += '<div class="confirmBox_btn">';
+            strHtml += '<button type="button" class="btn cCancelBtn" onclick="doCancle()">取消</button>';
+            strHtml += '<button type="button" class="btn cSureBtn" onclick="doOk()">确定</button></div></div>';
+            shield.innerHTML = strHtml;
+        } else {
+            shield = document.getElementById("confirm");
+            $(shield).css("display", "block");
+            $(shield).find("#confirmInfo").html(str);
+        }
+        this.doOk = function () {
+            $('body').css('overflow', 'hidden');
+            shield.style.display = "none";
+            if (typeof okCallback == 'function') {
+                okCallback();
+            }
+        },
+            this.doCancle = function () {
+                shield.style.display = "none";
+                if (typeof cancleCallback == 'function') {
+                    cancleCallback();
+                }
+                return false;
+            }
+    };
+    //    alert框的提示文字，确认回调函数
+    window.alert = function (str, callback) {
+        var shield;
+        $('body').css('overflow', 'auto');
+        if (!document.getElementById("alert")) {
+            shield = document.createElement("DIV");
+            shield.id = "alert";
+            shield.style.display = "block";
+            document.body.appendChild(shield);
+            var strHtml = "";
+            strHtml += '<div class="shadowMask"></div>';
+            strHtml += '<div class="alertBox">';
+            strHtml += '<p class="alertBox_con" id="alertInfo">' + str + '</p>';
+            strHtml += '<div class="alertBox_btn">';
+            strHtml += '<button type="button" class="btn aSureBtn" onclick="doOk()">确定</button></div>';
+            shield.innerHTML = strHtml;
+        } else {
+            shield = document.getElementById("alert");
+            $(shield).css("display", "block");
+            $(shield).find("#alertInfo").html(str);
+        }
+
+        this.doOk = function () {
+            $('body').css('overflow', 'hidden');
+            shield.style.display = "none";
+            if (typeof callback == 'function') {
+                callback();
+            }
+        }
+    }
+</script>
+</body>
+</html>

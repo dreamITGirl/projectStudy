@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de476ced-0b42-4246-8e75-91d15260a0de" name="Default" comment="+angular实现表格的分页与显示。修复了尾页点击的错误">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/iOS风格的弹出框.html" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/html/表格的分页显示.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/loaddown.html" afterPath="$PROJECT_DIR$/html/loaddown.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,22 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="页面水印效果.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html/页面水印效果.html">
+      <file leaf-file-name="iOS风格的弹出框.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/iOS风格的弹出框.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="62" column="6" lean-forward="true" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shuiyin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/shuiyin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="99">
+              <caret line="167" column="41" lean-forward="true" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#252#441#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,6 +47,11 @@
     <findStrings>
       <find>num</find>
       <find>div</find>
+      <find>list</find>
+      <find>标配</find>
+      <find>.list-item,</find>
+      <find>list2</find>
+      <find>alert</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -74,8 +74,12 @@
         <option value="$PROJECT_DIR$/html/angular中设置元素的显示隐藏.html" />
         <option value="$PROJECT_DIR$/html/breadcrumb.html" />
         <option value="$PROJECT_DIR$/html/angular实现表格的分页显示.html" />
-        <option value="$PROJECT_DIR$/html/页面水印效果.html" />
         <option value="$PROJECT_DIR$/js/shuiyin.js" />
+        <option value="$PROJECT_DIR$/html/页面水印效果.html" />
+        <option value="$PROJECT_DIR$/html/下拉刷新和上拉加载.html" />
+        <option value="$PROJECT_DIR$/html/tab切换加载更多数据.html" />
+        <option value="$PROJECT_DIR$/html/loaddown.html" />
+        <option value="$PROJECT_DIR$/html/iOS风格的弹出框.html" />
       </list>
     </option>
   </component>
@@ -86,8 +90,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="56" />
-    <option name="width" value="1094" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="832" />
     <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -119,17 +124,12 @@
             <path>
               <item name="projectStudy" type="b2602c69:ProjectViewProjectNode" />
               <item name="projectStudy" type="462c0819:PsiDirectoryNode" />
-              <item name=".vscode" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projectStudy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projectStudy" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projectStudy" type="b2602c69:ProjectViewProjectNode" />
               <item name="projectStudy" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="json" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -147,6 +147,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\projectStudy\css" />
+      <recent name="C:\Users\Administrator\Desktop\projectStudy\js" />
+      <recent name="C:\Users\Administrator\Desktop\projectStudy\json" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\projectStudy\css" />
     </key>
@@ -188,7 +193,7 @@
       <workItem from="1522465953320" duration="45000" />
       <workItem from="1523023379468" duration="449000" />
       <workItem from="1523024048230" duration="114000" />
-      <workItem from="1524360399743" duration="607000" />
+      <workItem from="1524360399743" duration="15683000" />
     </task>
     <task id="LOCAL-00001" summary="+增加了注册验证码的代码">
       <created>1520495960840</created>
@@ -253,17 +258,31 @@
       <option name="project" value="LOCAL" />
       <updated>1523024137756</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="增加页面水印效果，并修改了其中的BUG">
+      <created>1524361081965</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1524361081965</updated>
+    </task>
+    <task id="LOCAL-00011" summary="dropload插件的运用">
+      <created>1524388909228</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524388909228</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24583000" />
+    <option name="totallyTimeSpent" value="39659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22767204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21449487" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -298,11 +317,15 @@
     <MESSAGE value="+面包屑导航。基本修复完成" />
     <MESSAGE value="+angular实现表格的分页与显示。有一个问题暂时没有解决，在点击首页时，所有页码全部出现，并不会显示5个" />
     <MESSAGE value="+angular实现表格的分页与显示。修复了尾页点击的错误" />
-    <option name="LAST_COMMIT_MESSAGE" value="+angular实现表格的分页与显示。修复了尾页点击的错误" />
+    <MESSAGE value="增加页面水印效果，并修改了其中的BUG" />
+    <MESSAGE value="dropload插件的运用" />
+    <option name="LAST_COMMIT_MESSAGE" value="dropload插件的运用" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -532,13 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/angular中设置元素的显示隐藏.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1617">
-          <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/breadcrumb.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -579,9 +595,97 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/页面水印效果.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="62" column="6" lean-forward="true" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+        <state relative-caret-position="382">
+          <caret line="66" column="7" lean-forward="true" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/angular中设置元素的显示隐藏.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dropload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/dropload.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/下拉刷新和上拉加载.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="148" column="34" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="170" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#2027#2313#0" expanded="false" />
+            <element signature="e#2336#2629#0" expanded="false" />
+            <element signature="e#2669#4086#0" expanded="false" />
+            <element signature="e#5287#5404#0" expanded="false" />
+            <marker date="1524388901505" expanded="true" signature="3190:3511" ph="..." />
+            <marker date="1524388901505" expanded="true" signature="4525:4864" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/update.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/more.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/tab切换加载更多数据.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="154" column="34" lean-forward="true" selection-start-line="154" selection-start-column="34" selection-end-line="154" selection-end-column="34" />
+          <folding>
+            <marker date="1524388901445" expanded="true" signature="4360:4763" ph="..." />
+            <marker date="1524388901445" expanded="true" signature="5907:6310" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/loaddown.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <marker date="1524399602953" expanded="true" signature="2580:2901" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/iOS风格的弹出框.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="167" column="41" lean-forward="true" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#252#441#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
