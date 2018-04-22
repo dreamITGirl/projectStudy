@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de476ced-0b42-4246-8e75-91d15260a0de" name="Default" comment="+angular实现表格的分页与显示。修复了尾页点击的错误">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/iOS风格的弹出框.html" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/html/表格的分页显示.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/iOS风格的弹出框.html" afterPath="$PROJECT_DIR$/html/iOS风格的弹出框.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/loaddown.html" afterPath="$PROJECT_DIR$/html/loaddown.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,11 +22,11 @@
       <file leaf-file-name="iOS风格的弹出框.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/iOS风格的弹出框.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="167" column="41" lean-forward="true" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+            <state relative-caret-position="85">
+              <caret line="134" column="8" lean-forward="true" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#252#441#0" expanded="false" />
+                <element signature="e#253#446#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -171,6 +171,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="de476ced-0b42-4246-8e75-91d15260a0de" name="Default" comment="" />
@@ -193,7 +196,7 @@
       <workItem from="1522465953320" duration="45000" />
       <workItem from="1523023379468" duration="449000" />
       <workItem from="1523024048230" duration="114000" />
-      <workItem from="1524360399743" duration="15683000" />
+      <workItem from="1524360399743" duration="16223000" />
     </task>
     <task id="LOCAL-00001" summary="+增加了注册验证码的代码">
       <created>1520495960840</created>
@@ -272,11 +275,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524388909228</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="+ios风格的三种弹出框的封装">
+      <created>1524400323203</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1524400323203</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39659000" />
+    <option name="totallyTimeSpent" value="40199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -319,7 +329,8 @@
     <MESSAGE value="+angular实现表格的分页与显示。修复了尾页点击的错误" />
     <MESSAGE value="增加页面水印效果，并修改了其中的BUG" />
     <MESSAGE value="dropload插件的运用" />
-    <option name="LAST_COMMIT_MESSAGE" value="dropload插件的运用" />
+    <MESSAGE value="+ios风格的三种弹出框的封装" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ios风格的三种弹出框的封装" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -680,11 +691,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/iOS风格的弹出框.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="167" column="41" lean-forward="true" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+        <state relative-caret-position="85">
+          <caret line="134" column="8" lean-forward="true" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#252#441#0" expanded="false" />
+            <element signature="e#253#446#0" expanded="false" />
           </folding>
         </state>
       </provider>
