@@ -1,0 +1,67 @@
+HTML代码
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+
+        .list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-item {
+            /*height:200px;*/
+            border: 1px solid #DDDDDD;
+            line-height: 200px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        document.addEventListener('plusready', function () {
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+
+        });
+
+    </script>
+</head>
+<body>
+<ul class="list">
+    <li class="list-item">一、前言</li>
+    <li class="list-item">二、前言</li>
+    <li class="list-item">三、前言</li>
+    <li class="list-item">四、前言</li>
+    <li class="list-item">五、前言</li>
+    <li class="list-item">六、前言</li>
+    <li class="list-item">七、前言</li>
+    <li class="list-item">八、前言</li>
+
+</ul>
+
+
+<script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="../js/shuiyin.js"></script>
+<script type="text/javascript">
+    //这样监听全局事件容易出现的问题就是页面可能会重复渲染，或者在监听时清除上次渲染的水印，重新渲染
+    function scrollEve() {
+        if (window.scrollY > ($('body').height() / 2)) {
+            $('body').remove('.mask_div');
+            getDataTxt("body", url);
+        }
+    }
+
+    window.addEventLisenter("scroll", scrollEve, false);
+    //----------------------------------------------------------------------------------------
+    //监听的方法并不好用，因为并不能准确的知道div的高度。所以，如果存在数据加载中使用水印效果的话，可以在数据动态加载的过程中，清除之前渲染的水印后再重新渲染水印
+    //---------------------------------------------------------------------------------------------
+    getDataTxt("body", "http://127.0.0.1:8020/projectStudy/json/shuiyin.json");
+    //onresize时触发水印绘制
+    window.onresize = function () {
+        getDataTxt("body", "http://127.0.0.1:8020/projectStudy/json/shuiyin.json");
+    };
+</script>
+</body>
+</html>
