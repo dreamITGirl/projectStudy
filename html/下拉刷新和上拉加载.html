@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>下拉刷新+上拉加载</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/dropload.css">
+    <style>
+        html {
+            font-size: 14px;
+        }
+
+        .container {
+            width: 100%;
+            height: auto;
+        }
+
+        .header {
+            width: 100%;
+            height: 4rem;
+            background: #dddddd;
+            color: #080808;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            line-height: 4rem;
+            text-align: center;
+        }
+
+        .clear {
+            content: "";
+            width: 100%;
+            height: 4rem;
+        }
+
+        .list {
+            background: #fff;
+        }
+
+        .list-item {
+            display: flex;
+            height: 5rem;
+            line-height: 2;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        ul .list-item:last-child {
+            border: none;
+        }
+
+        .imgStyle {
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid #ddd;
+            margin: .5rem;
+        }
+
+        .list-item div {
+            width: 57%;
+            word-break: break-word;
+            color: #333;
+            margin-right: .5rem;
+        }
+
+        .dates {
+            margin-top: 1.6rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="header">标题部分</div>
+<div class="clear"></div>
+<div class="container">
+    <ul class="list"></ul>
+</div>
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script src="../js/dropload.js"></script>
+<script>
+    $(function () {
+        var page = 0;
+        var pageSize = 5;
+        $('.container').dropload({
+            scrollArea: window,
+            domUp: {//编写刷新的样式内容
+                domClass: 'droplaod-up',
+                domRefresh: '<div class="dropload-refresh">刷新</div>',
+                domUpdate: '<div class="dropload-update">释放更新数据</div>',
+                domLoad: '<div><span class="loading"></span>加载中,请耐心等待</div>'
+            },
+            domDown: {//编写加载数据的样式内容
+                domClass: 'dropload-down',
+                domRefresh: '<div class="dropload-refresh">加载更多</div>',
+                domLoad: '<div><span class="loading"></span>加载中,请耐心等待</div>',
+                dropNoData: '<div class="dropload-noData">暂无更多数据</div>'
+            },
+            loadDownFn: function (me) {
+                page++;
+                var html = "";
+                $.ajax({
+                    type: 'get',
+                    url: 'http://ons.me/tools/dropload/json.php?page=' + page + '&size=' + pageSize,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.length > 0) {
+                            for (var i = 0; i < data.length; i++) {
+                                html += `<li class="list-item">
+                                                <img src="${data[i].pic}" class="imgStyle">
+                                                <div class="pro_title">${data[i].title}</div>
+                                                <p class="dates">${data[i].date}</p>
+                                            </li>`
+                            }
+
+                        } else {
+                            me.lock();
+                            me.noData();
+                        }
+                        setTimeout(function () {
+                            $('.list').append(html);
+                            me.resetload();//每次追加完数据后重置
+                        }, 10)
+
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        me.resetload();//失败了也要重置
+                    }
+                })
+            },
+            loadUpFn: function (me) {
+                $.ajax({
+                    type: 'get',
+                    url: '../json/update.json',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        var str = "";
+                        for (var j = 0; j < data.lists.length; j++) {
+                            str += `<li class="list-item">
+                                                <img src="${data.lists[j].pic}" class="imgStyle">
+                                                <div class="pro_title">${data.lists[j].title}</div>
+                                                <p class="dates">${data.lists[j].date}</p>
+                                            </li>`;
+                        }
+                        setTimeout(function () {
+                            $('.list').html(str);
+                            me.resetload();//每次加载完数据后重置
+                            page = 0;
+                            me.unlock();//解锁loadDownFn中的内容
+                            me.noData(false)
+                        }, 10)
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        me.resetload();//每次加载完数据后重置
+                    }
+                })
+            },
+            threshold: 50
+
+        })
+    })
+</script>
+</body>
+</html>

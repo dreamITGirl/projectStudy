@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>tab切换加载更多数据</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/dropload.css">
+    <style>
+        html {
+            font-size: 14px;
+        }
+
+        .container {
+            width: 100%;
+            height: auto;
+        }
+
+        .header {
+            width: 100%;
+            height: 4rem;
+            background: #dddddd;
+            color: #080808;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            line-height: 4rem;
+            text-align: center;
+        }
+
+        .clear {
+            content: "";
+            width: 100%;
+            height: 4rem;
+        }
+
+        .list, .list2 {
+            background: #fff;
+        }
+
+        .list-item, .list2-item {
+            display: flex;
+            height: 5rem;
+            line-height: 1.5;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        ul .list-item:last-child {
+            border: none;
+        }
+
+        .imgStyle {
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid #ddd;
+            margin: .5rem;
+        }
+
+        .list-item div {
+            width: 57%;
+            word-break: break-word;
+            color: #333;
+            margin-right: .5rem;
+        }
+
+        .dates {
+            margin-top: 1.6rem;
+            color: #999;
+        }
+
+        .tab {
+            display: flex;
+            width: 100%;
+            height: 3rem;
+            line-height: 3rem;
+        }
+
+        .item {
+            display: inline-block;
+            width: 50%;
+            height: 3rem;
+            text-align: center;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .cur {
+            border-bottom: 2px solid #d43f3a;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="header">标题部分</div>
+<div class="clear"></div>
+<div class="tab">
+    <a href="javascript:;" class="item cur">手机菜单一</a>
+    <a href="javascript:;" class="item">手机菜单二</a>
+</div>
+<div class="container">
+    <ul class="list"></ul>
+    <ul class="list2 hide"></ul>
+</div>
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script src="../js/dropload.js"></script>
+<script>
+    var tab1Load = false;
+    var tab2Load = false;
+    var tabIndex = 0;
+    var pageStart = 0;
+    var pageEnd;
+    //切换菜单事件
+    $('.tab').on('click', '.item', function () {
+        var index = $(this).index();
+        tabIndex = index;
+        console.log(tabIndex);
+        $(this).addClass('cur').siblings().removeClass('cur');
+        $(this).parent().siblings('.container').children().eq(index).removeClass('hide').siblings().addClass('hide');
+        if (tabIndex == '0') {
+            console.log(tab1Load, tab2Load);
+            if (!tab1Load) {
+                dropload.unlock();
+                dropload.noData(false)
+            } else {
+                dropLoad.look('down');
+                dropLoad.noData();
+            }
+        } else {
+            if (!tab2Load) {
+                dropLoad.unlock();
+                dropLoad.noData(false)
+            } else {
+                dropLoad.look('down');
+                dropLoad.noData();
+            }
+        }
+        dropLoad.resetload()
+    });
+    //下拉刷新和上拉加载
+    var page = 0;
+    var pageSize = 5;
+    var counter = 0;
+    var dropLoad = $('.container').dropload({
+        scrollArea: window,
+        loadDownFn: function (me) {
+            counter++;
+            console.log(tabIndex);
+            console.log(tabIndex);
+            if (tabIndex == 0) {
+                $.ajax({
+                    type: 'get',
+                    url: '../json/more.json',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        var str = "";
+                        pageStart = pageSize * counter;
+                        pageEnd = data.lists.length;
+                        for (var j = pageStart; j < pageEnd; j++) {
+                            str += `<li class="list-item">
+                                                                <img src="${data.lists[j].pic}" class="imgStyle">
+                                                                <div class="pro_title">${data.lists[j].title}</div>
+                                                                <p class="dates">${data.lists[j].date}</p>
+                                                            </li>`;
+                            if ((j + 1) > data.lists.length) {
+                                tab1Load = true;
+                                me.look();
+                                me.noData();
+                                break;
+                            }
+                        }
+                        ;
+                        setTimeout(function () {
+                            $('.list').append(str);
+                            me.unlock();
+                            me.resetload();
+                        }, 0)
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        me.resetload()
+                    }
+                })
+            } else {
+                var html = "";
+                $.ajax({
+                    type: 'get',
+                    url: '../json/update.json',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        for (var i = 0; i < data.lists.length; i++) {
+                            html += `<li class="list-item">
+                                                                <img src="${data.lists[i].pic}" class="imgStyle">
+                                                                <div class="pro_title">${data.lists[i].title}</div>
+                                                                <p class="dates">${data.lists[i].date}</p>
+                                                            </li>`;
+                        }
+                        setTimeout(function () {
+                            $('.list2').append(html);
+                            me.resetload();
+                        }, 0)
+                    },
+                    error: function (data) {
+                        me.resetload();
+                    }
+                })
+            }
+
+        }
+    })
+
+</script>
+</body>
+</html>
