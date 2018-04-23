@@ -1,0 +1,41 @@
+{
+  "status": 0,
+  "msg": "获取成功",
+  "dataList": [
+    {
+      "name": "邓大伟",
+      "age": 30,
+      "sex": "男",
+      "national": "苗族",
+      "states": false
+    },
+    {
+      "name": "小小孙",
+      "age": 10,
+      "sex": "男",
+      "national": "汉族",
+      "states": false
+    },
+    {
+      "name": "偶像",
+      "age": 21,
+      "sex": "男",
+      "national": "汉族",
+      "states": false
+    },
+    {
+      "name": "李妮妮",
+      "age": 20,
+      "sex": "女",
+      "national": "汉族",
+      "states": false
+    },
+    {
+      "name": "张妮妮",
+      "age": 21,
+      "sex": "女",
+      "national": "汉族",
+      "states": false
+    }
+  ]
+}

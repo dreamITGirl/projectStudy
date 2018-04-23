@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>表格的全选，删除</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <style type="text/css">
+        table th {
+            text-align: center;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<table border="" cellspacing="" cellpadding="" class="table" style="text-align: center;">
+    <tr>
+        <th><input type="checkbox" ng-model="selectedAll" ng-click="selectAll()"/></th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>民族</th>
+        <th ng-click="delAll($event)" style="cursor:pointer">全部删除</th>
+    </tr>
+    <tr ng-repeat="item in items">
+        <td><input type="checkbox" ng-model="item.states" ng-change="selectOne(item.states)"/></td>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.sex}}</td>
+        <td>{{item.national}}</td>
+        <td ng-click="del($event)" style="cursor: pointer">删除</td>
+    </tr>
+</table>
+<script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function ($scope, $http) {
+        //设置默认为表格非全选
+        $scope.selectedAll = false;
+        $scope.state = [];
+        $http({
+            method: "GET",
+            url: "http://localhost:63342/projectStudy/json/selected.json"
+        }).then(function successCallback(response) {
+            console.log(response);
+            $scope.items = response.data.dataList;
+        }, function errorCallback(response) {
+            console.log(response)
+        });
+        //全选
+        $scope.selectAll = function () {
+            for (var i = 0; i < $scope.items.length; i++) {
+                if ($scope.selectedAll) {
+                    $scope.items[i].states = true;
+                    $scope.state = [1, 1, 1, 1, 1];
+
+                } else {
+                    $scope.state = [];
+                    $scope.items[i].states = false;
+                }
+                console.log($scope.state)
+            }
+        };
+        //单选
+        $scope.selectOne = function (m) {
+
+            if (m == true) {
+                $scope.state.push(1);
+                console.log($scope.state.length);
+                if ($scope.state.length == $scope.items.length) {
+                    $scope.selectedAll = true
+                } else {
+                    $scope.selectedAll = false;
+                }
+                console.log($scope.state);
+            } else {
+                console.log(m);
+                $scope.state.pop(1);
+                $scope.changed(m);
+            }
+        };
+        $scope.changed = function (a) {
+            if (a == true) {
+                $scope.state.push(1);
+
+                console.log($scope.state.length);
+                if ($scope.state.length == $scope.items.length) {
+                    $scope.selectedAll = true
+                } else {
+                    $scope.selectedAll = false;
+                }
+            } else {
+                console.log(a);
+                $scope.selectedAll = false;
+            }
+        }
+        //删除单个选项
+        $scope.del = function (event) {
+            //样式的删除
+            console.log($(event.target).parent().html());
+            $(event.target).parent().remove();
+        }
+        //删除全部选项
+        $scope.delAll = function (event) {
+            if ($scope.selectedAll == true) {
+//                        console.log( $(event.target).siblings().html())
+                $(event.target).parent().siblings().remove();
+                $scope.selectedAll = false;
+            } else {
+                alert('尚未选择要删除的项')
+            }
+        }
+
+
+    })
+</script>
+</body>
+</html>
