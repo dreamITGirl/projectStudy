@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function中return数据问题</title>
+</head>
+<body>
+
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script>
+    drawHtml();
+
+    function drawHtml() {
+        var html = "";
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:63342/projectStudy/json/data.json',
+            async: false,//将异步请求改为同步，就可以使return出的数据不为空
+            success: function (data) {
+                var dataList = data.peopleList;
+                for (var i = 0; i < dataList.length; i++) {
+                    html += `<p>姓名</p><p>${dataList[i].name}</p>
+                            <p>年龄</p><p>${dataList[i].name}</p>`
+                }
+                console.log(html);//此处输出的html是有值的
+            }
+        })
+        console.log(html);//返回的值为空
+        return html;
+    }
+</script>
+</body>
+</html>
