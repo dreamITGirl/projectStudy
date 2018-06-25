@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <title>swiper的tab切换学习移动端</title>
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <style>
+        body {
+            font-size: 12px;
+            font-family: '微软雅黑';
+        }
+
+        html, body, div, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab-container {
+            background-color: #ddd;
+        }
+
+        .swiper-slide {
+            width: 4rem;
+            height: 2rem;
+            line-height: 2rem;
+            text-align: center;
+        }
+
+        .swiper-slide-active {
+            border-bottom: 5px solid #2e6da4;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container tab-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">关注</div>
+        <div class="swiper-slide">推荐</div>
+        <div class="swiper-slide">热点</div>
+        <div class="swiper-slide">北京</div>
+        <div class="swiper-slide">星座</div>
+        <div class="swiper-slide">关注</div>
+        <div class="swiper-slide">推荐</div>
+        <div class="swiper-slide">热点</div>
+        <div class="swiper-slide">北京</div>
+        <div class="swiper-slide">星座</div>
+        <div class="swiper-slide">关注</div>
+        <div class="swiper-slide">推荐</div>
+        <div class="swiper-slide">热点</div>
+        <div class="swiper-slide">北京</div>
+        <div class="swiper-slide">星座</div>
+        <div class="swiper-slide">关注</div>
+        <div class="swiper-slide">推荐</div>
+        <div class="swiper-slide">热点</div>
+        <div class="swiper-slide">北京</div>
+        <div class="swiper-slide">星座</div>
+    </div>
+</div>
+<script src="../js/swiper.jquery.js"></script>
+<script src="../js/swiper.js"></script>
+<script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 + 'px';
+</script>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoPlay: false,
+        width: 80,
+        setWrapperSize: true,
+        hashnav: true
+    })
+</script>
+</body>
+</html>
