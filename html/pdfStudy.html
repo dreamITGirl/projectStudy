@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pdf的使用</title>
+</head>
+<body>
+<div id="container">
+    <div id="pop"></div>
+</div>
+<script src="../js/pdf.js"></script>
+<script src="../js/pdf.worker.js"></script>
+<script>
+    /*将请求来的base64编码的pdf文件，替换多余的空格和换行（为了兼容其他浏览器）
+    * 再使用浏览器自带的atob()的方式解析
+    * */
+    /*转化编码格式*/
+    function converData(data) {
+        data = data.replace(/[\n\r]/g, '');
+        var raw = window.atob(data);
+        var rawLength = raw.length;
+        var array = new Unit8Array(new ArrayBuffer(rawLength));
+        for (var i = 0; i < rawLength; i++) {
+            array[i] = raw.charCodeAt(i)
+        }
+        return array
+    }
+
+    /*将解码后的值传给PDFJS.getDocument(),交给pdf.js处理*/
+    function showPdfFile(data) {
+        var fileContent = converData(data);
+        $('#container').show();
+        $('#pop').empty();
+        PDFJS.getDocument(fileContent).then(function getPdfHelloWorld(pdf) {
+            pages = pdf.numPages;
+            for (var i = 1; i < pdf.numPages; i++) {
+                var id = 'page-id' + i;
+                $('#pop').append('<canvas id="' + id + '"></canvas>');
+                showAll(url, i, id)
+            }
+        })
+    }
+
+    function showAll(url, i, id) {
+        PDFJS.getDocument().then(function getPdfHelloWorld(pdf) {
+            pdf.getPage(page).then(function getPageHelloWorld(page) {
+                var scale = 1.0,
+                    viewport = page.getViewport(scale),
+                    canvas = document.getElementById(id),
+                    context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                }
+                page.render(renderContext)
+
+            })
+
+        })
+    }
+
+</script>
+</body>
+</html>
