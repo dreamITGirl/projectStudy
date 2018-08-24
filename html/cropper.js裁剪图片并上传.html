@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+    <link rel="stylesheet" href="../css/cropper.css"/>
+    <title>cropper.js 裁剪图片并上传demo</title>
+    <style>
+        .container {
+            width: 70%;
+            float: left;
+        }
+
+        .img {
+            width: 50%;
+        }
+
+        .preview-box {
+            width: 320px;
+            height: 180px;
+            overflow: hidden;
+            float: right;
+            margin-right: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="container">
+    <img src="../image/demo_img.jpg" alt="" class="img" id="demoImg"/>
+
+</div>
+<div class="preview-box"></div>
+
+
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script src="../js/cropper.js"></script>
+<script>
+
+    $('#demoImg').cropper({
+        aspectRatio: 16 / 9,
+        viewMode: 0,
+        dragMode: 'move',
+        minCanvasWidth: 300,
+        minCanvasHeight: 300,
+        minCropBoxWidth: 400,
+        minCropBoxHeight: 400,
+        preview: '.preview-box'
+    })
+
+
+</script>
+</body>
+</html>
