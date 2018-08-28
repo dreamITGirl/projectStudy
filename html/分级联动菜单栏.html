@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+    <title>菜单栏</title>
+    <style>
+        html, body, ul, li {
+            margin: 0;
+            padding: 0;
+            font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .top {
+            background: #4db3a4;
+            height: 34px;
+            width: 100%;
+            padding: 0 10%;
+            box-sizing: border-box;
+        }
+
+        .main-nav {
+            display: flex;
+            line-height: 34px;
+        }
+
+        .two-nav {
+            background: #4db3a4;
+            position: relative;
+            display: none;
+        }
+
+        .three-nav {
+            background: #4db3a4;
+            position: absolute;
+            top: 0;
+            right: -116px;
+            display: none;
+        }
+
+        .item-nav, .two-item, .three-item {
+            width: 126px;
+            text-align: center;
+        }
+
+        .item-nav > a, .two-item > a, .three-item > a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .activeItem {
+            background: #44a597;
+            width: 100px;
+        }
+
+        .item-nav:hover > .two-nav {
+            display: block;
+        }
+
+        .two-item:hover > .three-nav {
+            display: block;
+        }
+
+        .item-nav:hover, .two-item:hover, .three-item:hover {
+            background: #44a597;
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+    <ul class="main-nav">
+        <li class="item-nav">
+            <a href="javascript:;">我的行程</a>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">预定信息</a>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">改签信息</a>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">差旅报销</a>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">我的行程</a>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">我的行程</a>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">ES管理员</a>
+            <ul class="two-nav none">
+                <li class="two-item">
+                    <a href="javascript:;">ES差旅预订</a>
+                    <ul class="three-nav none">
+                        <li class="three-item">
+                            <a href="javascript:;">ES差旅1</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">2</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">3</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">4</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="two-item">
+                    <a href="javascript:;">ES差旅</a>
+                    <ul class="three-nav none">
+                        <li class="three-item">
+                            <a href="javascript:;">酒店账单</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">飞机账单</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">火车账单</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">全部账单</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">差旅报表</a>
+
+        </li>
+        <li class="item-nav">
+            <a href="javascript:;">差旅审批</a>
+            <ul class="two-nav none">
+                <li class="two-item">
+                    <a href="javascript:;">酒店账单</a>
+                    <ul class="three-nav none">
+                        <li class="three-item">
+                            <a href="javascript:;">酒店账单</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">飞机账单</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">火车账单</a>
+                        </li>
+                        <li class="three-item">
+                            <a href="javascript:;">全部账单</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
