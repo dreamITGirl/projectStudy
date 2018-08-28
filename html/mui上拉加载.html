@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+    <script>
+        window.onload = function () {
+            /*720代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是
+             为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/
+            getRem(750, 100)
+        };
+        window.onresize = function () {
+            getRem(750, 100)
+        };
+        function getRem(pwidth, prem) {
+            var html = document.getElementsByTagName("html")[0];
+            var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+            html.style.fontSize = oWidth / pwidth * prem + "px";
+        }
+    </script>
+    <link rel="stylesheet" href="../css/mui.min.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <title>关于mui的上拉加载</title>
+    <style>
+        .mui-content {
+            background: #fff;
+        }
+
+        h2 {
+            font-size: 0.28rem;
+            line-height: .6rem;
+            padding-left: 10px;
+        }
+
+        .mui-scroll-wrapper {
+            top: .75rem;
+        }
+    </style>
+</head>
+<body>
+<div class="mui-content">
+    <h2>上拉加载</h2>
+
+    <div class="mui-scroll-wrapper" id="pullRefresh">
+        <div class="mui-scroll">
+            <ul class="mui-table-view" id="listContainer">
+                <li class="mui-table-view-cell">
+                    list1
+                </li>
+                <li class="mui-table-view-cell">
+                    list2
+                </li>
+                <li class="mui-table-view-cell">
+                    list3
+                </li>
+                <li class="mui-table-view-cell">
+                    list4
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script src="../js/mui.min.js"></script>
+
+<script>
+    (function ($, doc) {
+        var listContainer = doc.getElementById('listContainer');
+        mui.init({
+            pullRefresh: {
+                container: '#pullRefresh',//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+                up: {
+                    height: 50,//可选.默认50.触发上拉加载拖动距离
+                    auto: true,//可选,默认false.自动上拉加载一次
+                    contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                    callback: pullfreshFunc //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+                }
+            }
+        });
+        var flag = true, counter = 1, pageSize = 10;
+
+        function pullfreshFunc() {
+            setTimeout(function () {
+                mui('#pullRefresh').pullRefresh().endPullupToRefresh(flag);//参数为true代表没有更多数据了。
+                getData();
+            }, 500);
+
+        }
+
+        function getData() {
+            mui.ajax({
+                type: 'get',
+                url: '../json/data.json',
+                data: {'counter': counter},
+                success: function (response) {
+                    console.log(response);
+                    let list = response.peopleList;
+
+                    let html = "";
+                    flag = !(list[0] == null || list[0] == "" || !list[0]);
+
+                    if (flag) {
+                        counter++;
+                    }
+                    for (let i = 0; i < list.length; i++) {
+                        html += '<li class="mui-table-view-cell">' + list[i].name + '</li>';
+                    }
+                    jQuery('#listContainer').append(html)
+
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+        //点击单项事件
+//        mui中上拉加载中的坑1：点击事件失效(不需要放在mui.plusReady（）中)
+        mui('#pullRefresh').on('tap', 'li.mui-table-view-cell', function (e) {
+            e.preventDefault();
+            console.log('触发点击事件了')
+        })
+    }(mui, document))
+</script>
+</body>
+</html>
